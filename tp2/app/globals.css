@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --background: #080b0a;
+  --foreground: #edf5ef;
+  --muted: #9ba9a0;
+  --green: #7cff9b;
+  --panel: #101613;
+  --border: #26352b;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+a { color: inherit; text-decoration: none; }
+
+.portfolio {
+  width: min(1080px, 100%);
+  margin: auto;
+  padding: 0 28px;
+}
+
+.navbar {
+  min-height: 82px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.logo span, .hero h1 span { color: var(--green); }
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.nav-links a:hover { color: var(--green); }
+
+.hero {
+  padding: 120px 0 100px;
+  max-width: 780px;
+}
+
+.eyebrow {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 7vw, 68px);
+  line-height: 1.1;
+  letter-spacing: -2.5px;
+  margin: 25px 0;
+}
+
+.description {
+  max-width: 630px;
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 19px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: transform .2s, background .2s;
+}
+
+.button:hover { transform: translateY(-3px); }
+.primary { background: var(--green); color: #08110a; border-color: var(--green); }
+.secondary { color: var(--foreground); }
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 30px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.status span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 12px var(--green);
+}
+
+.section {
+  padding: 65px 0;
+  border-top: 1px solid var(--border);
+}
+
+.section h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  letter-spacing: -1px;
+  margin: 14px 0 30px;
+}
+
+.skills {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.skill {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: 7px;
+  padding: 12px 16px;
+  color: #dce8df;
+  font-size: 13px;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.project {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  transition: border-color .2s, transform .2s;
+}
+
+.project:hover {
+  border-color: var(--green);
+  transform: translateY(-4px);
+}
+
+.project-number, .tags {
+  color: var(--green);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.project h3 { font-size: 19px; line-height: 1.5; }
+.project p { color: var(--muted); line-height: 1.8; font-size: 14px; }
+.tags { line-height: 2; }
+
+.contact { padding-bottom: 80px; }
+.contact p:not(.eyebrow) { color: var(--muted); line-height: 1.8; }
+.contact .button { margin-top: 15px; }
+
+footer {
+  padding: 25px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .portfolio { padding: 0 20px; }
+  .navbar { align-items: flex-start; padding: 20px 0; }
+  .nav-links { justify-content: flex-end; gap: 12px; max-width: 250px; }
+  .hero { padding: 85px 0 70px; }
+  .projects { grid-template-columns: 1fr; }
+  .section { padding: 48px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
