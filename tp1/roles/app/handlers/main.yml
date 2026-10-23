@@ -1,0 +1,30 @@
+---
+- name: Install npm dependencies
+  ansible.builtin.command:
+    argv:
+      - npm
+      - ci
+    chdir: "{{ app_dir }}"
+  become_user: "{{ deploy_user }}"
+  changed_when: false
+
+- name: Build Next.js application
+  ansible.builtin.command:
+    argv:
+      - npm
+      - run
+      - build
+    chdir: "{{ app_dir }}"
+  become_user: "{{ deploy_user }}"
+  changed_when: false
+
+- name: Restart portfolio
+  ansible.builtin.command:
+    argv:
+      - pm2
+      - startOrReload
+      - ecosystem.config.js
+      - --update-env
+    chdir: "{{ app_dir }}"
+  become_user: "{{ deploy_user }}"
+  changed_when: false

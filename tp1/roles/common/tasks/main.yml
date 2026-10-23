@@ -1,0 +1,22 @@
+---
+- name: Update APT cache
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Install required packages
+  ansible.builtin.apt:
+    name:
+      - git
+      - curl
+      - build-essential
+      - ca-certificates
+      - gnupg
+    state: present
+
+- name: Create deployment user
+  ansible.builtin.user:
+    name: "{{ deploy_user }}"
+    shell: /bin/bash
+    create_home: true
+    state: present

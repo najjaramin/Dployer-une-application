@@ -1,0 +1,7 @@
+app_repo: "https://github.com/najjaramin/myCV.git"
+app_version: "main"
+app_dir: "/opt/portfolio"
+app_port: 3000
+server_name: "_"
+deploy_user: "deploy"
+nodejs_major_version: "22"

@@ -1,0 +1,14 @@
+module.exports = {
+  apps: [
+    {
+      name: 'portfolio',
+      cwd: '{{ app_dir }}',
+      script: 'npm',
+      args: 'start -- --hostname 127.0.0.1 --port {{ app_port }}',
+      env: {
+        NODE_ENV: 'production',
+        PORT: '{{ app_port }}'
+      }
+    }
+  ]
+};
